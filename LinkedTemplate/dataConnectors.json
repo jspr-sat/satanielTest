@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "dataConnectorsKind": {
-            "type": "Array",
+            "type": "array",
             "defaultValue": [],
             "metadata": {
                 "description": "The kind of data connectors to enable"
@@ -53,8 +53,8 @@
         "ascName": "[concat('asc', uniqueString(resourceGroup().id))]",
         "mcasName": "[concat('mcas', uniqueString(resourceGroup().id))]",
         "aadipName": "[concat('aadip', uniqueString(resourceGroup().id))]",
-		"m365dName": "[concat('m365d', uniqueString(resourceGroup().id))]",
-		"mpipName": "[concat('mpip', uniqueString(resourceGroup().id))]",
+	"m365dName": "[concat('m365d', uniqueString(resourceGroup().id))]",
+	"mpipName": "[concat('mpip', uniqueString(resourceGroup().id))]",
         "tiName": "[concat('ti', uniqueString(resourceGroup().id))]"
     },
     "resources": [
