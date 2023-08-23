@@ -30,8 +30,7 @@
             }
         },
         "dataRetention": {
-            "defaultValue": 30,
-            "minValue": 7,
+            "minValue": 30,
             "maxValue": 730,
             "type": "Int",
             "metadata": {
