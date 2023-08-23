@@ -53,7 +53,7 @@
                 "filterPlaceholder": "Filter items ...",
                 "multiselect": false,
                 "selectAll": false,
-                "defaultValue": "Make a selection",
+                "defaultValue": "PerGB2018",
                 "toolTip": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers.",
                 "constraints": {
                     "allowedValues": [
@@ -128,7 +128,7 @@
                                     "label": "Microsoft Defender for Identity",
                                     "value": "AzureAdvancedThreatProtection"
                                 },
-								{
+				{
                                     "label": "Azure AD",
                                     "value": "AzureActiveDirectory"
                                 },
@@ -148,11 +148,11 @@
                                     "label": "Microsoft Defender for Cloud Apps",
                                     "value": "MicrosoftCloudAppSecurity"
                                 },
-								{
+				{
                                     "label": "Microsoft Defender 365",
                                     "value": "Microsoft365Defender"
                                 },
-								{
+				{
                                     "label": "Microsoft Purview Information Protection",
                                     "value": "MicrosoftPurviewInformationProtection"
                                 },
@@ -172,16 +172,20 @@
                                     "label": "DNS Analytics",
                                     "value": "DNS"
                                 },
-								{
+				{
                                     "label": "Threat Intelligence",
                                     "value": "ThreatIntelligence"
+                                },
+                                {
+                                    "label": "Syslog",
+                                    "value": "Syslog"
                                 }
                             ],
                             "required": true
                         },
                         "visible": true
                     },
-					{
+			{
                         "name": "aadStreams",
                         "type": "Microsoft.Common.DropDown",
                         "label": "Select Azure Active Directory log types to enable",
@@ -282,7 +286,7 @@
                     }
                 ]
                 },
-			    {
+		 {
                     "name": "analyticsRules",
                     "label": "Analytics Rules",
                     "elements": [
@@ -301,12 +305,12 @@
                             "name": "enableMLAlerts",
                             "type": "Microsoft.Common.CheckBox",
                             "label": "Enable ML Behavior Analytics alert rules?",
-                            "toolTip": "Select to enable ML Behavior Analytics rules for selected connectors (SecurityEvents)",
+                            "toolTip": "Select to enable ML Behavior Analytics rules for selected connectors (SecurityEvents and/or Syslog)",
                             "constraints": {
                                 "required": false,
                                 "validationMessage": "Enables SSH and/or RDP anomalous login alerts"
                             },
-                            "visible": "[if(or(contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents')), true, false)]"
+                            "visible": "[if(or(contains(steps('dataConnectors').enableDataConnectorsKind,'Syslog'),contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents')), true, false)]"
                         },
                         {
                             "name": "enableScheduledAlerts",
@@ -332,7 +336,7 @@
 	    "aadStreams": "[steps('dataConnectors').aadStreams]",
             "mcasDiscoveryLogs": "[steps('dataConnectors').mcasDiscoveryLogs]",
             "location": "[location()]",
-	    "enableMicrosoftAlerts": "[steps('analyticsRules').enableMicrosoftAlerts]",
+            "enableMicrosoftAlerts": "[steps('analyticsRules').enableMicrosoftAlerts]",
             "enableMLAlerts": "[steps('analyticsRules').enableMLAlerts]",
             "enableScheduledAlerts": "[steps('analyticsRules').enableScheduledAlerts]"
         }
