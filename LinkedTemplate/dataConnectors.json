@@ -67,7 +67,7 @@
     "resources": [
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'Office365')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('o365Name'))]",
@@ -89,7 +89,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'MicrosoftDefenderAdvancedThreatProtection')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('mdatpName'))]",
@@ -105,7 +105,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'MicrosoftCloudAppSecurity')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('mcasName'))]",
@@ -124,7 +124,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureSecurityCenter')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('ascName'))]",
@@ -140,7 +140,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureAdvancedThreatProtection')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aatpName'))]",
@@ -156,7 +156,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureActiveDirectoryIP')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aadipName'))]",
@@ -232,7 +232,7 @@
         },
 		{
             "condition": "[contains(parameters('dataConnectorsKind'), 'Microsoft365Defender')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('m365dName'))]",
@@ -248,7 +248,7 @@
         },
 		{
             "condition": "[contains(parameters('dataConnectorsKind'), 'MicrosoftPurviewInformationProtection')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('mpipName'))]",
@@ -332,7 +332,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'ThreatIntelligence')]",
-            "type": "Microsoft.SecurityInsights/dataConnectors",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
             "apiVersion": "2023-02-01-preview",
             "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('tiName'))]",
