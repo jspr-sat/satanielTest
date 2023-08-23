@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "dataConnectorsKind": {
-            "type": "array",
+            "type": "Array",
             "defaultValue": [],
             "metadata": {
                 "description": "The kind of data connectors to enable"
