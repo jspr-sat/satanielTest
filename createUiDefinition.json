@@ -175,10 +175,6 @@
 				{
                                     "label": "Threat Intelligence",
                                     "value": "ThreatIntelligence"
-                                },
-                                {
-                                    "label": "Syslog",
-                                    "value": "Syslog"
                                 }
                             ],
                             "required": true
