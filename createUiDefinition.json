@@ -131,6 +131,9 @@
                         "label": "Select data connectors to onboard",
                         "placeholder": "",
                         "multiselect": true,
+                        "filter": true,
+                        "filterPlaceholder": "Filter items ...",
+                        "multiLine": true,
                         "defaultValue": "Office365",
                         "toolTip": "Select the data connectors that you would like to enable",
                         "constraints": {
