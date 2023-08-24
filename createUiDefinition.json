@@ -137,42 +137,52 @@
                             "allowedValues": [
                                 {
                                     "label": "Office365",
+				    "description": "Global Admin or Security Admin permission required.",
                                     "value": "Office365"
                                 },
                                 {
                                     "label": "Microsoft Defender for Identity",
+				    "description": "Relevant M365 license and Global Admin or Security Admin permission required.",
                                     "value": "AzureAdvancedThreatProtection"
                                 },
 				{
                                     "label": "Azure AD",
+				    "description": "Global Admin or Security Admin permission required.",
                                     "value": "AzureActiveDirectory"
                                 },
                                 {
                                     "label": "Azure AD Identity Protection",
+				    "description": "Relevant Azure AD license and Global Admin or Security Admin permission required.",
                                     "value": "AzureActiveDirectoryIP"
                                 },
                                 {
                                     "label": "Microsoft Defender for Endpoint",
+				    "description": "Relevant MDE license and Global Admin or Security Admin permission required.",
                                     "value": "MicrosoftDefenderAdvancedThreatProtection"
                                 },
                                 {
                                     "label": "Microsoft Defender for Cloud",
+				    "description": "At least one MD plan enabled in MDC and Contributor permission required.",
                                     "value": "AzureSecurityCenter"
                                 },
                                 {
                                     "label": "Microsoft Defender for Cloud Apps",
+				    "description": "Relevant M365 license and Global Admin or Security Admin permission required.",
                                     "value": "MicrosoftCloudAppSecurity"
                                 },
 				{
                                     "label": "Microsoft Defender 365",
+				    "description": "Relevant O365/M365 license and Global Admin or Security Admin permission required.",
                                     "value": "Microsoft365Defender"
                                 },
 				{
                                     "label": "Microsoft Purview Information Protection",
+				    "description": "Relevant M365 license and Global Admin or Security Admin permission required.",					
                                     "value": "MicrosoftPurviewInformationProtection"
                                 },
                                 {
                                     "label": "Azure Activity",
+				    "description": "Owner role permission required.",
                                     "value": "AzureActivity"
                                 },
                                 {
@@ -189,6 +199,7 @@
                                 },
 				{
                                     "label": "Threat Intelligence",
+				    "description": "Global Admin or Security Admin permission required.",
                                     "value": "ThreatIntelligence"
                                 }
                             ],
