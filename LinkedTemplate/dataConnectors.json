@@ -107,9 +107,6 @@
                     },
                     "workspace-location": {
                         "value": "[parameters('location')]"
-                    },
-                    "workbook1-name": {
-                        "value": "Microsoft Defender For Endpoint"
                     }
                 }
             }
