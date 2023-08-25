@@ -89,7 +89,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'MicrosoftDefenderAdvancedThreatProtection')]",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('mdatpName'))]",
+            "name": "[variables('mdatpName')]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2021-04-01",
             "properties": {
@@ -116,7 +116,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'MicrosoftCloudAppSecurity')]",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('mcasName'))]",
+            "name": "[variables('mcasName')]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2021-04-01",
             "properties": {
@@ -140,7 +140,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureSecurityCenter')]",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('ascName'))]",
+            "name": "[variables('ascName')]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2021-04-01",
             "properties": {
@@ -164,7 +164,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureAdvancedThreatProtection')]",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aatpName'))]",
+            "name": "[variables('aatpName')]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2021-04-01",
             "properties": {
@@ -188,7 +188,7 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureActiveDirectoryIP')]",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aadipName'))]",
+            "name": "[variables('aadipName')]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2021-04-01",
             "properties": {
@@ -272,7 +272,7 @@
         },
 		{
             "condition": "[contains(parameters('dataConnectorsKind'), 'Microsoft365Defender')]",
-            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('m365dName'))]",
+            "name": "[variables('m365dName')]",
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2021-04-01",
             "properties": {
