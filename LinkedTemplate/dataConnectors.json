@@ -89,83 +89,123 @@
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'MicrosoftDefenderAdvancedThreatProtection')]",
-            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
-            "apiVersion": "2023-02-01-preview",
-            "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('mdatpName'))]",
-            "kind": "MicrosoftDefenderAdvancedThreatProtection",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
             "properties": {
-                "tenantId": "[parameters('tenantId')]",
-                "dataTypes": {
-                    "alerts": {
-                        "state": "enabled"
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Connectors/DefenderforEndpoint.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "workspace": {
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "workspace-location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "workbook1-name": {
+                        "value": "Microsoft Defender For Endpoint"
                     }
                 }
             }
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'MicrosoftCloudAppSecurity')]",
-            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
-            "apiVersion": "2023-02-01-preview",
-            "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('mcasName'))]",
-            "kind": "MicrosoftCloudAppSecurity",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
             "properties": {
-                "tenantId": "[parameters('tenantId')]",
-                "dataTypes": {
-                    "alerts": {
-                        "state": "enabled"
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Connectors/DefenderforCloudApps.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "workspace": {
+                        "value": "[parameters('workspaceName')]"
                     },
-                    "discoveryLogs": {
-                        "state": "[if(parameters('mcasDiscoveryLogs'),'enabled','disabled')]"
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "workspace-location": {
+                        "value": "[parameters('location')]"
                     }
                 }
             }
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureSecurityCenter')]",
-            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
-            "apiVersion": "2020-01-01",
-            "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('ascName'))]",
-            "kind": "AzureSecurityCenter",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
             "properties": {
-                "subscriptionId": "[parameters('subscriptionId')]",
-                "dataTypes": {
-                    "alerts": {
-                        "state": "enabled"
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Connectors/DefenderforCloud.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "workspace": {
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "workspace-location": {
+                        "value": "[parameters('location')]"
                     }
                 }
             }
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureAdvancedThreatProtection')]",
-            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
-            "apiVersion": "2023-02-01-preview",
-            "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aatpName'))]",
-            "kind": "AzureAdvancedThreatProtection",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
             "properties": {
-                "tenantId": "[parameters('tenantId')]",
-                "dataTypes": {
-                    "alerts": {
-                        "state": "enabled"
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Connectors/DefenderforIdentity.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "workspace": {
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "workspace-location": {
+                        "value": "[parameters('location')]"
                     }
                 }
             }
         },
         {
             "condition": "[contains(parameters('dataConnectorsKind'), 'AzureActiveDirectoryIP')]",
-            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
-            "apiVersion": "2023-02-01-preview",
-            "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aadipName'))]",
-            "kind": "AzureActiveDirectory",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
             "properties": {
-                "tenantId": "[parameters('tenantId')]",
-                "dataTypes": {
-                    "alerts": {
-                        "state": "enabled"
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Connectors/AADIP.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "workspace": {
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "workspace-location": {
+                        "value": "[parameters('location')]"
                     }
                 }
             }
@@ -232,16 +272,24 @@
         },
 		{
             "condition": "[contains(parameters('dataConnectorsKind'), 'Microsoft365Defender')]",
-            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
-            "apiVersion": "2023-02-01-preview",
-            "location": "[parameters('location')]",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('m365dName'))]",
-            "kind": "MicrosoftThreatProtection",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
             "properties": {
-                "tenantId": "[parameters('tenantId')]",
-                "dataTypes": {
-                    "incidents": {
-                        "state": "enabled"
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Connectors/M365Defender.json",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "workspace": {
+                        "value": "[parameters('workspaceName')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    },
+                    "workspace-location": {
+                        "value": "[parameters('location')]"
                     }
                 }
             }
@@ -317,17 +365,6 @@
             "properties": {
                 "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces',parameters('workspaceName'))]",
                 "containedResources": []
-            }
-        },
-        {
-            "condition": "[contains(parameters('dataConnectorsKind'), 'Syslog')]",
-            "type": "Microsoft.OperationalInsights/workspaces/dataSources",
-            "apiVersion": "2020-03-01-preview",
-            "location": "[parameters('location')]",
-            "name": "[concat(parameters('workspaceName'), '/syslogCollection')]",
-            "kind": "LinuxSyslogCollection",
-            "properties": {
-                "state": "Enabled"
             }
         },
         {
