@@ -93,13 +93,6 @@
                 "description": "Enable Scheduled analytics rules"
             }
         },
-        "mcasDiscoveryLogs": {
-            "defaultValue": false,
-            "type": "Bool",
-            "metadata": {
-                "description": "Enable MCAS Discovery Logs"
-            }
-        },
 	"aadStreams": {
             "type": "array",
             "metadata": {
@@ -192,9 +185,6 @@
                     },
                     "securityCollectionTier": {
                         "value": "[parameters('securityCollectionTier')]"
-                    },
-                    "mcasDiscoveryLogs": {
-                        "value": "[parameters('mcasDiscoveryLogs')]"
                     },
                     "location": {
                         "value": "[parameters('location')]"
