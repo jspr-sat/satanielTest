@@ -91,7 +91,7 @@
                 "type": "Microsoft.Common.Slider",
                 "min": 7,
                 "max": 730,
-                "label": "Data retention",
+                "label": "Data Retention",
                 "subLabel": "days",
                 "defaultValue": 30,
                 "toolTip": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days.",
@@ -278,17 +278,6 @@
                       "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'AzureActiveDirectory'),true,false)]"
                   },
                     {
-                        "name": "mcasDiscoveryLogs",
-                        "type": "Microsoft.Common.CheckBox",
-                        "label": "Enable MCAS Discovery Logs?",
-                        "toolTip": "Select to bring MCAS discovery logs into Sentinel. These logs are billed.",
-                        "constraints": {
-                            "required": false,
-                            "validationMessage": "Please select"
-                        },
-                        "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'MicrosoftCloudAppSecurity'), true, false)]"
-                    },
-                    {
                         "name": "securityCollectionTier",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Security Events to stream into Sentinel ",
@@ -334,12 +323,12 @@
                             "name": "enableMLAlerts",
                             "type": "Microsoft.Common.CheckBox",
                             "label": "Enable ML Behavior Analytics alert rules?",
-                            "toolTip": "Select to enable ML Behavior Analytics rules for selected connectors (SecurityEvents and/or Syslog)",
+                            "toolTip": "Select to enable ML Behavior Analytics rules for selected connectors (Security Events)",
                             "constraints": {
                                 "required": false,
                                 "validationMessage": "Enables SSH and/or RDP anomalous login alerts"
                             },
-                            "visible": "[if(or(contains(steps('dataConnectors').enableDataConnectorsKind,'Syslog'),contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents')), true, false)]"
+                            "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents')), true, false)]"
                         },
                         {
                             "name": "enableScheduledAlerts",
@@ -364,7 +353,6 @@
             "enableDataConnectorsKind": "[steps('dataConnectors').enableDataConnectorsKind]",
             "securityCollectionTier": "[steps('dataConnectors').securityCollectionTier]",
 	    "aadStreams": "[steps('dataConnectors').aadStreams]",
-            "mcasDiscoveryLogs": "[steps('dataConnectors').mcasDiscoveryLogs]",
             "location": "[location()]",
             "enableMicrosoftAlerts": "[steps('analyticsRules').enableMicrosoftAlerts]",
             "enableMLAlerts": "[steps('analyticsRules').enableMLAlerts]",
