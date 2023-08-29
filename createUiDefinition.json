@@ -74,10 +74,6 @@
                             "value": "PerNode"
                         },
 			{
-                            "label": "Standard",
-                            "value": "Standard"
-                        },
-			{
                             "label": "Premium",
                             "value": "Premium"
                         }
@@ -139,7 +135,7 @@
                         "filterPlaceholder": "Filter items ...",
                         "multiLine": true,
                         "defaultValue": "Office365",
-                        "toolTip": "Select the data connectors that you would like to enable/install",
+                        "toolTip": "Select the data connectors that you would like to enable",
                         "constraints": {
                             "allowedValues": [
                                 {
@@ -148,7 +144,7 @@
                                     "value": "Office365"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Identity (Installation Only)",
+                                    "label": "Microsoft Defender for Identity",
 				    "description": "Relevant M365 license and Global Admin or Security Admin permission required.",
                                     "value": "AzureAdvancedThreatProtection"
                                 },
@@ -158,27 +154,27 @@
                                     "value": "AzureActiveDirectory"
                                 },
                                 {
-                                    "label": "Azure AD Identity Protection (Installation Only)",
+                                    "label": "Azure AD Identity Protection",
 				    "description": "Relevant Azure AD license and Global Admin or Security Admin permission required.",
                                     "value": "AzureActiveDirectoryIP"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Endpoint (Installation Only)",
+                                    "label": "Microsoft Defender for Endpoint",
 				    "description": "Relevant MDE license and Global Admin or Security Admin permission required.",
                                     "value": "MicrosoftDefenderAdvancedThreatProtection"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Cloud (Installation Only)",
+                                    "label": "Microsoft Defender for Cloud",
 				    "description": "At least one MD plan enabled in MDC and Contributor permission required.",
                                     "value": "AzureSecurityCenter"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Cloud Apps (Installation Only)",
+                                    "label": "Microsoft Defender for Cloud Apps",
 				    "description": "Relevant M365 license and Global Admin or Security Admin permission required.",
                                     "value": "MicrosoftCloudAppSecurity"
                                 },
 				{
-                                    "label": "Microsoft Defender  (Installation Only)",
+                                    "label": "Microsoft Defender 365",
 				    "description": "Relevant O365/M365 license and Global Admin or Security Admin permission required.",
                                     "value": "Microsoft365Defender"
                                 },
@@ -278,6 +274,17 @@
                       "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'AzureActiveDirectory'),true,false)]"
                   },
                     {
+                        "name": "mcasDiscoveryLogs",
+                        "type": "Microsoft.Common.CheckBox",
+                        "label": "Enable MCAS Discovery Logs?",
+                        "toolTip": "Select to bring MCAS discovery logs into Sentinel. These logs are billed.",
+                        "constraints": {
+                            "required": false,
+                            "validationMessage": "Please select"
+                        },
+                        "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'MicrosoftCloudAppSecurity'), true, false)]"
+                    },
+                    {
                         "name": "securityCollectionTier",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Security Events to stream into Sentinel ",
@@ -323,12 +330,12 @@
                             "name": "enableMLAlerts",
                             "type": "Microsoft.Common.CheckBox",
                             "label": "Enable ML Behavior Analytics alert rules?",
-                            "toolTip": "Select to enable ML Behavior Analytics rules for selected connectors (Security Events)",
+                            "toolTip": "Select to enable ML Behavior Analytics rules for selected connectors (SecurityEvents and/or Syslog)",
                             "constraints": {
                                 "required": false,
                                 "validationMessage": "Enables SSH and/or RDP anomalous login alerts"
                             },
-                            "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents')), true, false)]"
+                            "visible": "[if(or(contains(steps('dataConnectors').enableDataConnectorsKind,'Syslog'),contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents')), true, false)]"
                         },
                         {
                             "name": "enableScheduledAlerts",
@@ -353,6 +360,7 @@
             "enableDataConnectorsKind": "[steps('dataConnectors').enableDataConnectorsKind]",
             "securityCollectionTier": "[steps('dataConnectors').securityCollectionTier]",
 	    "aadStreams": "[steps('dataConnectors').aadStreams]",
+            "mcasDiscoveryLogs": "[steps('dataConnectors').mcasDiscoveryLogs]",
             "location": "[location()]",
             "enableMicrosoftAlerts": "[steps('analyticsRules').enableMicrosoftAlerts]",
             "enableMLAlerts": "[steps('analyticsRules').enableMLAlerts]",
