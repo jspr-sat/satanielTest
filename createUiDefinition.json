@@ -278,17 +278,6 @@
                       "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'AzureActiveDirectory'),true,false)]"
                   },
                     {
-                        "name": "mcasDiscoveryLogs",
-                        "type": "Microsoft.Common.CheckBox",
-                        "label": "Enable MCAS Discovery Logs?",
-                        "toolTip": "Select to bring MCAS discovery logs into Sentinel. These logs are billed.",
-                        "constraints": {
-                            "required": false,
-                            "validationMessage": "Please select"
-                        },
-                        "visible": false
-                    },
-                    {
                         "name": "securityCollectionTier",
                         "type": "Microsoft.Common.OptionsGroup",
                         "label": "Security Events to stream into Sentinel ",
@@ -339,7 +328,7 @@
                                 "required": false,
                                 "validationMessage": "Enables SSH and/or RDP anomalous login alerts"
                             },
-                            "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents')), true, false)]"
+			    "visible": "[if(contains(steps('dataConnectors').enableDataConnectorsKind,'SecurityEvents'), true, false)]"
                         },
                         {
                             "name": "enableScheduledAlerts",
@@ -364,7 +353,6 @@
             "enableDataConnectorsKind": "[steps('dataConnectors').enableDataConnectorsKind]",
             "securityCollectionTier": "[steps('dataConnectors').securityCollectionTier]",
 	    "aadStreams": "[steps('dataConnectors').aadStreams]",
-            "mcasDiscoveryLogs": "[steps('dataConnectors').mcasDiscoveryLogs]",
             "location": "[location()]",
             "enableMicrosoftAlerts": "[steps('analyticsRules').enableMicrosoftAlerts]",
             "enableMLAlerts": "[steps('analyticsRules').enableMLAlerts]",
