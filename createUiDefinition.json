@@ -74,6 +74,10 @@
                             "value": "PerNode"
                         },
 			{
+                            "label": "Standard",
+                            "value": "Standard"
+                        },
+			{
                             "label": "Premium",
                             "value": "Premium"
                         }
@@ -135,7 +139,7 @@
                         "filterPlaceholder": "Filter items ...",
                         "multiLine": true,
                         "defaultValue": "Office365",
-                        "toolTip": "Select the data connectors that you would like to enable",
+                        "toolTip": "Select the data connectors that you would like to enable/install",
                         "constraints": {
                             "allowedValues": [
                                 {
@@ -144,7 +148,7 @@
                                     "value": "Office365"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Identity",
+                                    "label": "Microsoft Defender for Identity (Installation Only)",
 				    "description": "Relevant M365 license and Global Admin or Security Admin permission required.",
                                     "value": "AzureAdvancedThreatProtection"
                                 },
@@ -154,27 +158,27 @@
                                     "value": "AzureActiveDirectory"
                                 },
                                 {
-                                    "label": "Azure AD Identity Protection",
+                                    "label": "Azure AD Identity Protection (Installation Only)",
 				    "description": "Relevant Azure AD license and Global Admin or Security Admin permission required.",
                                     "value": "AzureActiveDirectoryIP"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Endpoint",
+                                    "label": "Microsoft Defender for Endpoint (Installation Only)",
 				    "description": "Relevant MDE license and Global Admin or Security Admin permission required.",
                                     "value": "MicrosoftDefenderAdvancedThreatProtection"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Cloud",
+                                    "label": "Microsoft Defender for Cloud (Installation Only)",
 				    "description": "At least one MD plan enabled in MDC and Contributor permission required.",
                                     "value": "AzureSecurityCenter"
                                 },
                                 {
-                                    "label": "Microsoft Defender for Cloud Apps",
+                                    "label": "Microsoft Defender for Cloud Apps (Installation Only)",
 				    "description": "Relevant M365 license and Global Admin or Security Admin permission required.",
                                     "value": "MicrosoftCloudAppSecurity"
                                 },
 				{
-                                    "label": "Microsoft Defender 365",
+                                    "label": "Microsoft Defender 365 (Installation Only)",
 				    "description": "Relevant O365/M365 license and Global Admin or Security Admin permission required.",
                                     "value": "Microsoft365Defender"
                                 },
