@@ -51,6 +51,7 @@
         "aatpRuleId": "[concat('aatp', uniqueString(parameters('ruleGuid')))]",
         "mdatpRuleId": "[concat('mdatp', uniqueString(parameters('ruleGuid')))]",
         "aadipRuleId": "[concat('aadip', uniqueString(parameters('ruleGuid')))]",
+        "aadip2RuleId": "[concat('aadip2', uniqueString(parameters('ruleGuid')))]",
         "o365RuleId": "[concat('o365', uniqueString(parameters('ruleGuid')))]",
         "fusionRuleId": "[concat('fusion', uniqueString(parameters('ruleGuid')))]",
         "mlbaSshRuleId": "[concat('mlSsh',uniqueString(parameters('ruleGuid')))]",
@@ -70,6 +71,22 @@
                 "alertRuleTemplateName": "532c1811-79ee-4d9f-8d4d-6304c840daa1",
                 "description": "Create incidents based on Azure Active Directory Identity Protection alerts",
                 "displayName": "Create incidents based on all alerts generated in Azure Active Directory Identity Protection",
+                "enabled": true,
+                "productFilter": "Azure Active Directory Identity Protection"
+            }
+        },
+        {
+            "condition": "[and(contains(parameters('dataConnectorsKind'), 'AzureActiveDirectoryIP'),parameters('enableMicrosoftAlerts'))]",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aadip2RuleId'))]",
+            "apiVersion": "2020-01-01",
+            "kind": "MicrosoftSecurityIncidentCreation",
+            "location": "[parameters('location')]",
+            "dependsOn": [],
+            "properties": {
+                "alertRuleTemplateName": "a3df4a32-4805-4c6d-8699-f3c888af2f67",
+                "description": "The combination of an Unfamiliar sign-in properties alert and an Atypical travel alert about the same user within a +10m or -10m window is considered a high severity incident.",
+                "displayName": "Correlate Unfamiliar sign-in properties & atypical travel alerts",
                 "enabled": true,
                 "productFilter": "Azure Active Directory Identity Protection"
             }
