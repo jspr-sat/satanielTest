@@ -454,31 +454,6 @@
                             "kind": "AnalyticsRule",
                             "contentId": "[variables('analyticRulecontentId1')]",
                             "version": "[variables('analyticRuleVersion1')]"
-                        },
-                        {
-                            "kind": "Playbook",
-                            "contentId": "[variables('_Confirm-AADRiskyUser-alert-trigger')]",
-                            "version": "[variables('playbookVersion1')]"
-                        },
-                        {
-                            "kind": "Playbook",
-                            "contentId": "[variables('_Confirm-AADRiskyUser-incident-trigger')]",
-                            "version": "[variables('playbookVersion2')]"
-                        },
-                        {
-                            "kind": "Playbook",
-                            "contentId": "[variables('_Dismiss-AADRisky-Useralert-trigger')]",
-                            "version": "[variables('playbookVersion3')]"
-                        },
-                        {
-                            "kind": "Playbook",
-                            "contentId": "[variables('_Dismiss-AADRisky-Userincident-trigger')]",
-                            "version": "[variables('playbookVersion4')]"
-                        },
-                        {
-                            "kind": "Playbook",
-                            "contentId": "[variables('_IdentityProtection-TeamsBotResponse')]",
-                            "version": "[variables('playbookVersion5')]"
                         }
                     ]
                 },
