@@ -79,7 +79,7 @@
             "condition": "[and(contains(parameters('dataConnectorsKind'), 'AzureActiveDirectoryIP'),parameters('enableMicrosoftAlerts'))]",
             "type": "Microsoft.OperationalInsights/workspaces/providers/alertRules",
             "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/',variables('aadip2RuleId'))]",
-            "apiVersion": "2020-01-01",
+            "apiVersion": "2022-04-01-preview",
             "kind": "Scheduled",
             "location": "[parameters('location')]",
             "dependsOn": [],
