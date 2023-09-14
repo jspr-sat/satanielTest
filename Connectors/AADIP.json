@@ -98,6 +98,402 @@
                     "resources": []
                 }
             }
+        },
+        {
+            "type": "Microsoft.Resources/templateSpecs",
+            "apiVersion": "2022-02-01",
+            "name": "[variables('dataConnectorTemplateSpecName1')]",
+            "location": "[parameters('workspace-location')]",
+            "tags": {
+                "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
+                "hidden-sentinelContentType": "DataConnector"
+            },
+            "properties": {
+                "description": "Azure Active Directory Identity Protection data connector with template",
+                "displayName": "Azure Active Directory Identity Protection template"
+            }
+        },
+        {
+            "type": "Microsoft.Resources/templateSpecs/versions",
+            "apiVersion": "2022-02-01",
+            "name": "[concat(variables('dataConnectorTemplateSpecName1'),'/',variables('dataConnectorVersion1'))]",
+            "location": "[parameters('workspace-location')]",
+            "tags": {
+                "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
+                "hidden-sentinelContentType": "DataConnector"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/templateSpecs', variables('dataConnectorTemplateSpecName1'))]"
+            ],
+            "properties": {
+                "description": "Azure Active Directory Identity Protection data connector with template version 2.0.7",
+                "mainTemplate": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "[variables('dataConnectorVersion1')]",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',variables('_dataConnectorContentId1'))]",
+                            "apiVersion": "2021-03-01-preview",
+                            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+                            "location": "[parameters('workspace-location')]",
+                            "kind": "StaticUI",
+                            "properties": {
+                                "connectorUiConfig": {
+                                    "id": "[variables('_uiConfigId1')]",
+                                    "title": "Azure Active Directory Identity Protection",
+                                    "publisher": "Microsoft",
+                                    "descriptionMarkdown": "Azure Active Directory Identity Protection provides a consolidated view at risk users, risk events and vulnerabilities, with the ability to remediate risk immediately, and set policies to auto-remediate future events. The service is built on Microsoft’s experience protecting consumer identities and gains tremendous accuracy from the signal from over 13 billion logins a day. Integrate Microsoft Azure Active Directory Identity Protection alerts with Microsoft Sentinel to view dashboards, create custom alerts, and improve investigation. For more information, see the [Microsoft Sentinel documentation ](https://go.microsoft.com/fwlink/p/?linkid=2220065&wt.mc_id=sentinel_dataconnectordocs_content_cnl_csasci).\n\n[Get Azure Active Directory Premium P1/P2 ](https://aka.ms/asi-ipcconnectorgetlink)",
+                                    "graphQueries": [
+                                        {
+                                            "metricName": "Total data received",
+                                            "legend": "SecurityAlerts (IPC)",
+                                            "baseQuery": "SecurityAlert | where ProductName == \"Azure Active Directory Identity Protection\""
+                                        }
+                                    ],
+                                    "connectivityCriterias": [
+                                        {
+                                            "type": "SentinelKinds",
+                                            "value": [
+                                                "AzureActiveDirectory"
+                                            ]
+                                        }
+                                    ],
+                                    "dataTypes": [
+                                        {
+                                            "name": "SecurityAlert (IPC)",
+                                            "lastDataReceivedQuery": "SecurityAlert | where ProductName == \"Azure Active Directory Identity Protection\"\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+                            "apiVersion": "2022-01-01-preview",
+                            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('DataConnector-', last(split(variables('_dataConnectorId1'),'/'))))]",
+                            "properties": {
+                                "parentId": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId1'))]",
+                                "contentId": "[variables('_dataConnectorContentId1')]",
+                                "kind": "DataConnector",
+                                "version": "[variables('dataConnectorVersion1')]",
+                                "source": {
+                                    "kind": "Solution",
+                                    "name": "Azure Active Directory Identity Protection",
+                                    "sourceId": "[variables('_solutionId')]"
+                                },
+                                "author": {
+                                    "name": "Microsoft",
+                                    "email": "[variables('_email')]"
+                                },
+                                "support": {
+                                    "tier": "Microsoft",
+                                    "name": "Microsoft Corporation",
+                                    "email": "support@microsoft.com",
+                                    "link": "https://support.microsoft.com/"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+            "apiVersion": "2022-01-01-preview",
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('DataConnector-', last(split(variables('_dataConnectorId1'),'/'))))]",
+            "dependsOn": [
+                "[variables('_dataConnectorId1')]"
+            ],
+            "location": "[parameters('workspace-location')]",
+            "properties": {
+                "parentId": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId1'))]",
+                "contentId": "[variables('_dataConnectorContentId1')]",
+                "kind": "DataConnector",
+                "version": "[variables('dataConnectorVersion1')]",
+                "source": {
+                    "kind": "Solution",
+                    "name": "Azure Active Directory Identity Protection",
+                    "sourceId": "[variables('_solutionId')]"
+                },
+                "author": {
+                    "name": "Microsoft",
+                    "email": "[variables('_email')]"
+                },
+                "support": {
+                    "tier": "Microsoft",
+                    "name": "Microsoft Corporation",
+                    "email": "support@microsoft.com",
+                    "link": "https://support.microsoft.com/"
+                }
+            }
+        },
+        {
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',variables('_dataConnectorContentId1'))]",
+            "apiVersion": "2021-03-01-preview",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/dataConnectors",
+            "location": "[parameters('workspace-location')]",
+            "kind": "StaticUI",
+            "properties": {
+                "connectorUiConfig": {
+                    "title": "Azure Active Directory Identity Protection",
+                    "publisher": "Microsoft",
+                    "descriptionMarkdown": "Azure Active Directory Identity Protection provides a consolidated view at risk users, risk events and vulnerabilities, with the ability to remediate risk immediately, and set policies to auto-remediate future events. The service is built on Microsoft’s experience protecting consumer identities and gains tremendous accuracy from the signal from over 13 billion logins a day. Integrate Microsoft Azure Active Directory Identity Protection alerts with Microsoft Sentinel to view dashboards, create custom alerts, and improve investigation. For more information, see the [Microsoft Sentinel documentation ](https://go.microsoft.com/fwlink/p/?linkid=2220065&wt.mc_id=sentinel_dataconnectordocs_content_cnl_csasci).\n\n[Get Azure Active Directory Premium P1/P2 ](https://aka.ms/asi-ipcconnectorgetlink)",
+                    "graphQueries": [
+                        {
+                            "metricName": "Total data received",
+                            "legend": "SecurityAlerts (IPC)",
+                            "baseQuery": "SecurityAlert | where ProductName == \"Azure Active Directory Identity Protection\""
+                        }
+                    ],
+                    "dataTypes": [
+                        {
+                            "name": "SecurityAlert (IPC)",
+                            "lastDataReceivedQuery": "SecurityAlert | where ProductName == \"Azure Active Directory Identity Protection\"\n            | summarize Time = max(TimeGenerated)\n            | where isnotempty(Time)"
+                        }
+                    ],
+                    "connectivityCriterias": [
+                        {
+                            "type": "SentinelKinds",
+                            "value": [
+                                "AzureActiveDirectory"
+                            ]
+                        }
+                    ],
+                    "id": "[variables('_uiConfigId1')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Resources/templateSpecs",
+            "apiVersion": "2022-02-01",
+            "name": "[variables('analyticRuleTemplateSpecName1')]",
+            "location": "[parameters('workspace-location')]",
+            "tags": {
+                "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
+                "hidden-sentinelContentType": "AnalyticsRule"
+            },
+            "properties": {
+                "description": "Azure Active Directory Identity Protection Analytics Rule 1 with template",
+                "displayName": "Azure Active Directory Identity Protection AR template"
+            }
+        },
+        {
+            "type": "Microsoft.Resources/templateSpecs/versions",
+            "apiVersion": "2022-02-01",
+            "name": "[concat(variables('analyticRuleTemplateSpecName1'),'/',variables('analyticRuleVersion1'))]",
+            "location": "[parameters('workspace-location')]",
+            "tags": {
+                "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
+                "hidden-sentinelContentType": "AnalyticsRule"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Resources/templateSpecs', variables('analyticRuleTemplateSpecName1'))]"
+            ],
+            "properties": {
+                "description": "CorrelateIPC_Unfamiliar-Atypical_AnalyticalRules Analytics Rule with template version 2.0.7",
+                "mainTemplate": {
+                    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                    "contentVersion": "[variables('analyticRuleVersion1')]",
+                    "parameters": {},
+                    "variables": {},
+                    "resources": [
+                        {
+                            "type": "Microsoft.SecurityInsights/AlertRuleTemplates",
+                            "name": "[variables('AnalyticRulecontentId1')]",
+                            "apiVersion": "2022-04-01-preview",
+                            "kind": "Scheduled",
+                            "location": "[parameters('workspace-location')]",
+                            "properties": {
+                                "description": "The combination of an Unfamiliar sign-in properties alert and an Atypical travel alert about the same user within a +10m or -10m window is considered a high severity incident.",
+                                "displayName": "Correlate Unfamiliar sign-in properties & atypical travel alerts",
+                                "enabled": false,
+                                "query": "// We can use this configuration TimeDeltaInMinutes if you want to chnage the time window that we try to match the alerts\nlet TimeDeltaInMinutes = 10;\nlet Alert_UnfamiliarSignInProps = \nSecurityAlert\n| where TimeGenerated > ago(1d)\n| where ProductName =~ \"Azure Active Directory Identity Protection\"\n| where AlertName =~ \"Unfamiliar sign-in properties\"\n| mv-expand Entity = todynamic(Entities)\n| where Entity.Type =~ \"account\"\n| extend AadTenantId = tostring(Entity.AadTenantId)\n| extend AadUserId = tostring(Entity.AadUserId)\n| join kind=inner (\nIdentityInfo\n| distinct AccountTenantId, AccountObjectId, AccountUPN, AccountDisplayName\n| extend UserName = AccountDisplayName\n| extend UserAccount = AccountUPN\n| where isnotempty(AccountDisplayName) and isnotempty(UserAccount)\n| project AccountTenantId, AccountObjectId, UserAccount, UserName\n)\non\n$left.AadTenantId == $right.AccountTenantId,\n$left.AadUserId == $right.AccountObjectId\n| extend CompromisedEntity = iff(CompromisedEntity == \"N/A\" or isempty(CompromisedEntity), UserAccount, CompromisedEntity)\n| extend Alert_UnfamiliarSignInProps_Time = TimeGenerated\n| extend Alert_UnfamiliarSignInProps_Name = AlertName\n| extend Alert_UnfamiliarSignInProps_Severity = AlertSeverity\n| project AadTenantId, AadUserId, AccountTenantId, AccountObjectId, Alert_UnfamiliarSignInProps_Name, Alert_UnfamiliarSignInProps_Severity, Alert_UnfamiliarSignInProps_Time, UserAccount, UserName\n;\nlet Alert_AtypicalTravels = \nSecurityAlert\n| where TimeGenerated > ago(1d)\n| where ProductName =~ \"Azure Active Directory Identity Protection\"\n| where AlertName =~ \"Atypical travel\"\n| mv-expand Entity = todynamic(Entities)\n| where Entity.Type =~ \"account\"\n| extend AadTenantId = tostring(Entity.AadTenantId)\n| extend AadUserId = tostring(Entity.AadUserId)\n| join kind=inner (\nIdentityInfo\n| distinct AccountTenantId, AccountObjectId, AccountUPN, AccountDisplayName\n| extend UserName = AccountDisplayName\n| extend UserAccount = AccountUPN\n| where isnotempty(AccountDisplayName) and isnotempty(UserAccount)\n| project AccountTenantId, AccountObjectId, UserAccount, UserName\n)\non\n$left.AadTenantId == $right.AccountTenantId,\n$left.AadUserId == $right.AccountObjectId\n| extend CompromisedEntity = iff(CompromisedEntity == \"N/A\" or isempty(CompromisedEntity), UserAccount, CompromisedEntity)\n| extend Alert_AtypicalTravels_Time = TimeGenerated\n| extend Alert_AtypicalTravels_Name = AlertName\n| extend Alert_AtypicalTravels_Severity = AlertSeverity\n| extend ExtendedProperties_json= parse_json(ExtendedProperties)\n| extend CurrentLocation = tostring(ExtendedProperties_json.[\"Current Location\"])\n| extend PreviousLocation = tostring(ExtendedProperties_json.[\"Previous Location\"])\n| extend CurrentIPAddress = tostring(ExtendedProperties_json.[\"Current IP Address\"])\n| extend PreviousIPAddress = tostring(ExtendedProperties_json.[\"Previous IP Address\"])\n| project AadTenantId, AadUserId, AccountTenantId, AccountObjectId, Alert_AtypicalTravels_Name, Alert_AtypicalTravels_Severity, Alert_AtypicalTravels_Time, CurrentIPAddress, PreviousIPAddress, CurrentLocation, PreviousLocation, UserAccount, UserName, CompromisedEntity\n;\nAlert_UnfamiliarSignInProps\n| join kind=inner Alert_AtypicalTravels on UserAccount\n| where abs(datetime_diff('minute', Alert_UnfamiliarSignInProps_Time, Alert_AtypicalTravels_Time)) <= TimeDeltaInMinutes\n| extend TimeDelta = Alert_UnfamiliarSignInProps_Time - Alert_AtypicalTravels_Time\n| project UserAccount, Alert_UnfamiliarSignInProps_Name, Alert_UnfamiliarSignInProps_Severity, Alert_UnfamiliarSignInProps_Time, Alert_AtypicalTravels_Name, Alert_AtypicalTravels_Severity, Alert_AtypicalTravels_Time, TimeDelta, CurrentLocation, PreviousLocation, CurrentIPAddress, PreviousIPAddress, UserName\n| extend UserEmailName = split(UserAccount,'@')[0], UPNSuffix = split(UserAccount,'@')[1]\n",
+                                "queryFrequency": "P1D",
+                                "queryPeriod": "P14D",
+                                "severity": "High",
+                                "suppressionDuration": "PT1H",
+                                "suppressionEnabled": false,
+                                "triggerOperator": "GreaterThan",
+                                "triggerThreshold": 0,
+                                "status": "Available",
+                                "requiredDataConnectors": [
+                                    {
+                                        "dataTypes": [
+                                            "SecurityAlert (IPC)"
+                                        ],
+                                        "connectorId": "AzureActiveDirectoryIdentityProtection"
+                                    },
+                                    {
+                                        "dataTypes": [
+                                            "IdentityInfo"
+                                        ],
+                                        "connectorId": "BehaviorAnalytics"
+                                    }
+                                ],
+                                "tactics": [
+                                    "InitialAccess"
+                                ],
+                                "techniques": [
+                                    "T1078"
+                                ],
+                                "entityMappings": [
+                                    {
+                                        "entityType": "Account",
+                                        "fieldMappings": [
+                                            {
+                                                "columnName": "UPNSuffix",
+                                                "identifier": "UPNSuffix"
+                                            },
+                                            {
+                                                "columnName": "UserEmailName",
+                                                "identifier": "Name"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "entityType": "IP",
+                                        "fieldMappings": [
+                                            {
+                                                "columnName": "CurrentIPAddress",
+                                                "identifier": "Address"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "entityType": "IP",
+                                        "fieldMappings": [
+                                            {
+                                                "columnName": "PreviousIPAddress",
+                                                "identifier": "Address"
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "customDetails": {
+                                    "CurrentIPAddress": "CurrentIPAddress",
+                                    "Alert1_Name": "Alert_UnfamiliarSignInProps_Name",
+                                    "Alert2_Name": "Alert_AtypicalTravels_Name",
+                                    "CurrentLocation": "CurrentLocation",
+                                    "Alert1_Severity": "Alert_UnfamiliarSignInProps_Severity",
+                                    "Alert2_Time": "Alert_AtypicalTravels_Time",
+                                    "Alert2_Severity": "Alert_AtypicalTravels_Severity",
+                                    "PreviousIPAddress": "PreviousIPAddress",
+                                    "Alert1_Time": "Alert_UnfamiliarSignInProps_Time",
+                                    "TimeDelta": "TimeDelta",
+                                    "PreviousLocation": "PreviousLocation"
+                                }
+                            }
+                        },
+                        {
+                            "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+                            "apiVersion": "2022-01-01-preview",
+                            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat('AnalyticsRule-', last(split(variables('analyticRuleId1'),'/'))))]",
+                            "properties": {
+                                "description": "Azure Active Directory Identity Protection Analytics Rule 1",
+                                "parentId": "[variables('analyticRuleId1')]",
+                                "contentId": "[variables('_analyticRulecontentId1')]",
+                                "kind": "AnalyticsRule",
+                                "version": "[variables('analyticRuleVersion1')]",
+                                "source": {
+                                    "kind": "Solution",
+                                    "name": "Azure Active Directory Identity Protection",
+                                    "sourceId": "[variables('_solutionId')]"
+                                },
+                                "author": {
+                                    "name": "Microsoft",
+                                    "email": "[variables('_email')]"
+                                },
+                                "support": {
+                                    "tier": "Microsoft",
+                                    "name": "Microsoft Corporation",
+                                    "email": "support@microsoft.com",
+                                    "link": "https://support.microsoft.com/"
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/metadata",
+            "apiVersion": "2022-01-01-preview",
+            "location": "[parameters('workspace-location')]",
+            "properties": {
+                "version": "2.0.7",
+                "kind": "Solution",
+                "contentSchemaVersion": "2.0.0",
+                "contentId": "[variables('_solutionId')]",
+                "parentId": "[variables('_solutionId')]",
+                "source": {
+                    "kind": "Solution",
+                    "name": "Azure Active Directory Identity Protection",
+                    "sourceId": "[variables('_solutionId')]"
+                },
+                "author": {
+                    "name": "Microsoft",
+                    "email": "[variables('_email')]"
+                },
+                "support": {
+                    "name": "Microsoft Corporation",
+                    "email": "support@microsoft.com",
+                    "tier": "Microsoft",
+                    "link": "https://support.microsoft.com/"
+                },
+                "dependencies": {
+                    "operator": "AND",
+                    "criteria": [
+                        {
+                            "kind": "DataConnector",
+                            "contentId": "[variables('_dataConnectorContentId1')]",
+                            "version": "[variables('dataConnectorVersion1')]"
+                        },
+                        {
+                            "kind": "AnalyticsRule",
+                            "contentId": "[variables('analyticRulecontentId1')]",
+                            "version": "[variables('analyticRuleVersion1')]"
+                        },
+                        {
+                            "kind": "Playbook",
+                            "contentId": "[variables('_Confirm-AADRiskyUser-alert-trigger')]",
+                            "version": "[variables('playbookVersion1')]"
+                        },
+                        {
+                            "kind": "Playbook",
+                            "contentId": "[variables('_Confirm-AADRiskyUser-incident-trigger')]",
+                            "version": "[variables('playbookVersion2')]"
+                        },
+                        {
+                            "kind": "Playbook",
+                            "contentId": "[variables('_Dismiss-AADRisky-Useralert-trigger')]",
+                            "version": "[variables('playbookVersion3')]"
+                        },
+                        {
+                            "kind": "Playbook",
+                            "contentId": "[variables('_Dismiss-AADRisky-Userincident-trigger')]",
+                            "version": "[variables('playbookVersion4')]"
+                        },
+                        {
+                            "kind": "Playbook",
+                            "contentId": "[variables('_IdentityProtection-TeamsBotResponse')]",
+                            "version": "[variables('playbookVersion5')]"
+                        }
+                    ]
+                },
+                "firstPublishDate": "2022-05-18",
+                "providers": [
+                    "Microsoft"
+                ],
+                "categories": {
+                    "domains": [
+                        "Security - Threat Protection",
+                        "Security - Automation (SOAR)"
+                    ]
+                }
+            },
+            "name": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/', variables('_solutionId'))]"
         }
     ],
     "outputs": {}
