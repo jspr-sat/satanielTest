@@ -68,10 +68,6 @@
             "apiVersion": "2023-04-01-preview",
             "name": "[variables('dataConnectorTemplateSpecName1')]",
             "location": "[parameters('workspace-location')]",
-            "tags": {
-                "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
-                "hidden-sentinelContentType": "DataConnector"
-            },
             "dependsOn": [
                 "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
             ],
@@ -146,7 +142,18 @@
                             }
                         }
                     ]
-                }
+                },
+                "packageKind": "Solution",
+                "packageVersion": "[variables('_solutionVersion')]",
+                "packageName": "[variables('_solutionName')]",
+                "packageId": "[variables('_solutionId')]",
+                "contentSchemaVersion": "3.0.0",
+                "contentId": "[variables('_dataConnectorContentId1')]",
+                "contentKind": "DataConnector",
+                "displayName": "Microsoft Defender for Cloud",
+                "contentProductId": "[variables('_dataConnectorcontentProductId1')]",
+                "id": "[variables('_dataConnectorcontentProductId1')]",
+                "version": "[variables('dataConnectorVersion1')]"
             }
         },
         {
