@@ -46,7 +46,7 @@
         "_dataConnectorContentId1": "[variables('dataConnectorContentId1')]",
         "dataConnectorId1": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId1'))]",
         "_dataConnectorId1": "[variables('dataConnectorId1')]",
-        "dataConnectorTemplateSpecName1": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentId1'))),variables('dataConnectorVersion1')))]",
+        "dataConnectorTemplateSpecName1": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentId1')))]",
         "dataConnectorVersion1": "1.0.0"
     },
     "resources": [
