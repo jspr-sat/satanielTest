@@ -64,30 +64,16 @@
             }
         },
         {
-            "type": "Microsoft.Resources/templateSpecs",
-            "apiVersion": "2022-02-01",
+            "type": "Microsoft.OperationalInsights/workspaces/providers/contentTemplates",
+            "apiVersion": "2023-04-01-preview",
             "name": "[variables('dataConnectorTemplateSpecName1')]",
             "location": "[parameters('workspace-location')]",
             "tags": {
                 "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
                 "hidden-sentinelContentType": "DataConnector"
             },
-            "properties": {
-                "description": "Microsoft Defender for Cloud data connector with template",
-                "displayName": "Microsoft Defender for Cloud template"
-            }
-        },
-        {
-            "type": "Microsoft.Resources/templateSpecs/versions",
-            "apiVersion": "2022-02-01",
-            "name": "[concat(variables('dataConnectorTemplateSpecName1'),'/',variables('dataConnectorVersion1'))]",
-            "location": "[parameters('workspace-location')]",
-            "tags": {
-                "hidden-sentinelWorkspaceId": "[variables('workspaceResourceId')]",
-                "hidden-sentinelContentType": "DataConnector"
-            },
             "dependsOn": [
-                "[resourceId('Microsoft.Resources/templateSpecs', variables('dataConnectorTemplateSpecName1'))]"
+                "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/contentPackages', variables('_solutionId'))]"
             ],
             "properties": {
                 "description": "Microsoft Defender for Cloud data connector with template version 2.0.1",
