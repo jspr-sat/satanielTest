@@ -51,6 +51,7 @@
         "dataConnectorTemplateSpecName1": "[concat(parameters('workspace'),'/Microsoft.SecurityInsights/',concat(concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentId1'))),variables('dataConnectorVersion1')))]",
         "dataConnectorVersion1": "1.0.0",
         "_dataConnectorcontentProductId1": "[concat(take(variables('_solutionId'),50),'-','dc','-', uniqueString(concat(variables('_solutionId'),'-','DataConnector','-',variables('_dataConnectorContentId1'),'-', variables('dataConnectorVersion1'))))]",
+        "_solutioncontentProductId": "[concat(take(variables('_solutionId'),50),'-','sl','-', uniqueString(concat(variables('_solutionId'),'-','Solution','-',variables('_solutionId'),'-', variables('_solutionVersion'))))]"
     },
     "resources": [
         {
