@@ -30,6 +30,8 @@
         }
     },
     "variables": {
+        "_solutionName": "MicrosoftDefenderForCloud",
+        "_solutionVersion": "3.0.0",
         "solutionId": "azuresentinel.azure-sentinel-solution-microsoftdefenderforcloud",
         "_solutionId": "[variables('solutionId')]",
         "email": "support@microsoft.com",
@@ -46,7 +48,7 @@
         "_dataConnectorContentId1": "[variables('dataConnectorContentId1')]",
         "dataConnectorId1": "[extensionResourceId(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspace')), 'Microsoft.SecurityInsights/dataConnectors', variables('_dataConnectorContentId1'))]",
         "_dataConnectorId1": "[variables('dataConnectorId1')]",
-        "dataConnectorTemplateSpecName1": "[concat(parameters('workspace'),'-dc-',uniquestring(variables('_dataConnectorContentId1')))]",
+        "dataConnectorTemplateSpecName1": "[concat(take(variables('_solutionId'),50),'-','dc','-', uniqueString(concat(variables('_solutionId'),'-','DataConnector','-',variables('_dataConnectorContentId1'),'-', variables('dataConnectorVersion1'))))]",
         "dataConnectorVersion1": "1.0.0"
     },
     "resources": [
@@ -126,7 +128,7 @@
                                 "version": "[variables('dataConnectorVersion1')]",
                                 "source": {
                                     "kind": "Solution",
-                                    "name": "Microsoft Defender for Cloud",
+                                    "name": "Microsoft DefenderforCloud",
                                     "sourceId": "[variables('_solutionId')]"
                                 },
                                 "author": {
