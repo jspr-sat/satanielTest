@@ -27,7 +27,7 @@
         {
             "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
             "name": "[variables('identityName')]",
-            "apiVersion": "2018-11-30",
+            "apiVersion": "2023-01-31",
             "location": "[resourceGroup().location]"
         },
         {
@@ -41,9 +41,9 @@
                 "forceUpdateTag": "1",
                 "azPowerShellVersion": "3.0",
                 "arguments": "",
-                "scriptContent": "Start-Sleep -Seconds 120",
+                "scriptContent": "Start-Sleep -Seconds 60",
                 "supportingScriptUris": [],
-                "timeout": "PT30M",
+                "timeout": "PT20M",
                 "cleanupPreference": "Always",
                 "retentionInterval": "P1D"
             }
@@ -54,7 +54,7 @@
             "name": "[parameters('roleGuid')]",
             "properties": {
                 "roleDefinitionId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
-                "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2018-11-30', 'Full').properties.principalId]",
+                "principalId": "[reference(resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('identityName')), '2023-01-31', 'Full').properties.principalId]",
                 "scope": "[resourceGroup().id]"
             },
             "dependsOn": [
@@ -80,7 +80,7 @@
                 "arguments": "[concat('-Workspace ', parameters('workspaceName'), ' -ResourceGroup ', resourceGroup().name, ' -Connectors ', parameters('dataConnectorsList'))]",
                 "primaryScriptUri": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Scripts/EnableRules.ps1",
                 "supportingScriptUris": [],
-                "timeout": "PT30M",
+                "timeout": "PT20M",
                 "cleanupPreference": "OnSuccess",
                 "retentionInterval": "P1D"
             }
