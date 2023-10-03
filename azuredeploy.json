@@ -108,7 +108,7 @@
             "defaultValue": []
         },
         "_artifactsLocation": {
-            "defaultValue": "https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/",
+            "defaultValue": "https://raw.githubusercontent.com/jspr-sat/satanielTest/main/",
             "type": "String",
             "metadata": {
                 "description": "The location of resources"
