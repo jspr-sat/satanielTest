@@ -6,7 +6,7 @@
         "config": {
             "isWizard": true,
             "basics": {
-                "description": "<img width=450 src=\"https://raw.githubusercontent.com/jspr-sat/satanielDeployment/main/Resources/logo.png\">\n\n**Sataniel** Deployment Tool",
+                "description": "<img width=450 src=\"https://raw.githubusercontent.com/jspr-sat/satanielTest/main/Resources/logo.png\">\n\n**Sataniel** Deployment Tool",
                 "location": {
                     "label": "Location",
                     "toolTip": "Location for all resources",
