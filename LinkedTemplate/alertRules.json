@@ -83,11 +83,12 @@
             "name": "[concat(parameters('workspaceName'),'/ADIPQuery')]",
             "apiVersion": "2020-08-01",
             "location": "[parameters('location')]",
+            "dependsOn": [],
             "properties": {
-                "alertRuleTemplateName": "532c1811-79ee-4d9f-8d4d-6304c840daa1",
+                "category": "Hunting Queries",
                 "description": "Hunt for Administrative Unit events in Azure AD audit logs (past 30 days). These events should be rare. Make sure they are legitimate.",
                 "displayName": "Administrative Unit events in Azure AD audit logs",
-                "query": "// Administrative Unit events in Azure AD audit logs [DCSecurityOperations].\nAuditLogs\n| where OperationName in ("Add administrative unit", "Delete administrative unit", "Update administrative unit")\n| project TimeGenerated, OperationName, InitiatedByUpn=InitiatedBy.user.userPrincipalName, InitiatedById=InitiatedBy.user.id, TargetResources\n| order by TimeGenerated desc\n",
+                "query": "// Administrative Unit events in Azure AD audit logs [DCSecurityOperations].\nAuditLogs\n| where OperationName in ('Add administrative unit', 'Delete administrative unit', 'Update administrative unit')\n| project TimeGenerated, OperationName, InitiatedByUpn=InitiatedBy.user.userPrincipalName, InitiatedById=InitiatedBy.user.id, TargetResources\n| order by TimeGenerated desc\n",
                 "requiredDataConnectors": [
                     {
                         "dataTypes": [
